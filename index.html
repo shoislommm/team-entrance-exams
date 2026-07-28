@@ -863,7 +863,7 @@
   var UF_EXAM_TYPE = 'UF_CRM_1784278080';
   /* Exam date UF field: replace 'UF_CRM_XXXXXXXX' with the real UF ID from the
      Bitrix24 portal. Until then the selected date is still sent inside COMMENTS. */
-  var UF_EXAM_DATE = 'UF_CRM_XXXXXXXX';
+  var UF_EXAM_DATE = 'UF_CRM_1781469487';
 //   var UF_FOUNDATION_LANGUAGE = 'UF_CRM_1785150043';
 //   var UF_PAGE_LANGUAGE = 'UF_CRM_1785150087';
 
@@ -1658,7 +1658,7 @@
         PHONE: [{ VALUE: formPayload.phone, VALUE_TYPE: 'WORK' }],
         EMAIL: [{ VALUE: formPayload.email, VALUE_TYPE: 'WORK' }],
         BIRTHDATE: formPayload.dob,
-        COMMENTS: 'Exam date: ' + examDateLabel + '\nComments: ' + (formPayload.comments || '—'),
+        COMMENTS: formPayload.comments || '—',
         SOURCE_ID: BITRIX_SOURCE_ID,
         SOURCE_DESCRIPTION: window.location.href
       };
