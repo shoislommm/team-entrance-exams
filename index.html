@@ -60,10 +60,9 @@
 /* ============ Header ============ */
 .team-exam-header{background:var(--te-white);border-bottom:1px solid var(--te-border);}
 .team-exam-header__inner{display:flex;align-items:center;flex-wrap:wrap;gap:10px;max-width:1160px;margin:0 auto;padding:14px 20px;}
-.team-exam-logo{display:inline-flex;align-items:center;gap:10px;font-weight:800;border-radius:12px;}
-.team-exam-logo__mark{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--te-blue),var(--te-navy));color:#fff;font-size:1.2rem;font-weight:800;box-shadow:var(--te-shadow);}
-.team-exam-logo__text{font-size:1.05rem;text-transform:uppercase;letter-spacing:.06em;color:var(--te-blue);line-height:1.15;}
-.team-exam-logo__text span{display:block;font-size:.6rem;font-weight:700;letter-spacing:.3em;color:var(--te-muted);}
+.team-exam-logo{display:inline-flex;align-items:center;gap:10px;border-radius:12px;}
+/* Logo image: scales the user's own logo in header and footer. */
+.team-exam-logo__image{display:block;height:42px;width:auto;max-width:220px;object-fit:contain;}
 .team-exam-lang{display:inline-flex;align-items:center;background:var(--te-gray);border:1px solid var(--te-border);border-radius:999px;padding:4px;gap:2px;margin-left:auto;}
 .team-exam-lang__btn{min-width:44px;min-height:40px;padding:8px 13px;border-radius:999px;background:none;border:none;font-family:inherit;font-weight:700;font-size:.82rem;letter-spacing:.05em;color:var(--te-muted);cursor:pointer;transition:background-color .2s ease,color .2s ease,box-shadow .2s ease;}
 .team-exam-lang__btn:hover{color:var(--te-blue);}
@@ -128,6 +127,21 @@
 .team-exam-feature__title{font-size:1.06rem;font-weight:800;color:var(--te-blue);margin-bottom:8px;line-height:1.35;}
 .team-exam-feature__text{color:var(--te-muted);font-size:.94rem;}
 
+/* ============ Scholarships / grants ============ */
+.team-exam-scholarships{position:relative;overflow:hidden;background:linear-gradient(160deg,#0D2D6C 0%,#0A2456 50%,#071E4A 100%);color:#fff;}
+.team-exam-scholarships::before{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:#1D47A0;opacity:.4;filter:blur(80px);top:-150px;right:-120px;pointer-events:none;}
+.team-exam-scholarships::after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:#E53935;opacity:.15;filter:blur(80px);bottom:-130px;left:-110px;pointer-events:none;}
+.team-exam-scholarships .team-exam-container{position:relative;z-index:2;}
+.team-exam-grants{display:grid;grid-template-columns:1fr;gap:18px;}
+.team-exam-grant{position:relative;background:#fff;color:var(--te-text);border-radius:var(--te-radius);padding:30px 24px;text-align:center;box-shadow:var(--te-shadow-lg);overflow:hidden;transition:transform .25s ease,box-shadow .25s ease;}
+.team-exam-grant::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--te-red),var(--te-blue));}
+.team-exam-grant:hover{transform:translateY(-4px);}
+.team-exam-grant__score{display:inline-block;font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--te-muted);margin-bottom:10px;}
+.team-exam-grant__percent{font-size:clamp(2.6rem,5vw,3.3rem);font-weight:800;line-height:1.05;color:var(--te-red-text);}
+.team-exam-grant__label{margin-top:8px;font-size:1.02rem;font-weight:800;color:var(--te-blue);}
+.team-exam-grant__text{margin-top:8px;color:var(--te-muted);font-size:.92rem;}
+.team-exam-scholarships__note{max-width:640px;margin:28px auto 0;text-align:center;font-size:.9rem;color:rgba(255,255,255,.8);}
+
 /* ============ Registration ============ */
 .team-exam-register{position:relative;overflow:hidden;padding:80px 0;background:linear-gradient(160deg,#0D2D6C 0%,#0A2456 50%,#071E4A 100%);color:#fff;}
 .team-exam-register::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:#1D47A0;opacity:.4;filter:blur(80px);top:-160px;left:-140px;pointer-events:none;}
@@ -173,6 +187,31 @@
 .team-exam-segmented--error{border-color:var(--te-red);box-shadow:0 0 0 4px rgba(229,57,53,.1);}
 .team-exam-segmented__note{display:flex;align-items:flex-start;gap:8px;margin-top:12px;padding:11px 14px;border-radius:12px;background:rgba(13,45,108,.06);border:1px solid var(--te-border);color:var(--te-blue);font-size:.86rem;font-weight:600;line-height:1.5;}
 .team-exam-segmented__note svg{margin-top:1px;flex:0 0 auto;color:var(--te-blue);}
+/* Exam date picker: large selectable radio cards (see the matching fieldset in the form). */
+.team-exam-date-picker{border:0;min-width:0;padding:0;font-family:inherit;}
+.team-exam-date-picker legend{display:flex;align-items:baseline;gap:6px;padding:0;font-size:1.08rem;font-weight:800;color:var(--te-text);line-height:1.35;}
+.team-exam-date-picker__required{color:var(--te-red-text);font-weight:800;}
+.team-exam-date-picker__hint{margin-top:4px;font-size:.94rem;color:var(--te-muted);}
+.team-exam-date-picker--error .team-exam-date-picker__hint{color:var(--te-red-dark);}
+.team-exam-date-picker__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin-top:18px;}
+.team-exam-date-card{position:relative;display:block;min-width:0;cursor:pointer;}
+/* The real radio stays focusable for keyboard/screen-reader users but is
+   visually hidden; the card body is the visible control. */
+.team-exam-date-card__input{position:absolute;top:24px;left:24px;width:18px;height:18px;margin:0;opacity:0;pointer-events:none;}
+.team-exam-date-card__body{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:30px 20px;text-align:center;background:#fff;border:2px solid var(--te-border);border-radius:20px;box-shadow:0 4px 14px rgba(13,45,108,.05);transition:border-color .2s ease,background-color .2s ease,box-shadow .2s ease,transform .2s ease;}
+.team-exam-date-card:hover .team-exam-date-card__body{border-color:var(--te-blue);transform:translateY(-2px);box-shadow:var(--te-shadow);}
+.team-exam-date-card__badge{position:absolute;top:16px;right:16px;padding:6px 14px;border-radius:999px;background:var(--te-red-text);color:#fff;font-size:.7rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;box-shadow:0 6px 14px rgba(229,57,53,.3);}
+.team-exam-date-card__top{font-size:.88rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--te-muted);}
+.team-exam-date-card__date{font-size:clamp(1.5rem,4.5vw,1.9rem);font-weight:800;line-height:1.12;color:var(--te-blue);}
+.team-exam-date-card__bottom{font-size:.95rem;font-weight:600;color:var(--te-muted);}
+.team-exam-date-card__input:checked+.team-exam-date-card__body{border-color:var(--te-red-text);background:rgba(229,57,53,.07);box-shadow:0 8px 22px rgba(229,57,53,.14);}
+.team-exam-date-card__input:checked+.team-exam-date-card__body .team-exam-date-card__date{color:var(--te-red-text);}
+.team-exam-date-card__input:focus-visible+.team-exam-date-card__body{outline:3px solid var(--te-red);outline-offset:3px;}
+/* Disabled example card: faded and non-interactive. Remove the `disabled`
+   attribute (and the --disabled class) in the markup to make it selectable. */
+.team-exam-date-card--disabled{cursor:not-allowed;}
+.team-exam-date-card--disabled .team-exam-date-card__body{opacity:.5;box-shadow:none;}
+.team-exam-date-card--disabled:hover .team-exam-date-card__body{border-color:var(--te-border);transform:none;box-shadow:none;}
 .team-exam-form__actions{margin-top:26px;display:flex;flex-direction:column;gap:16px;}
 .team-exam-form__note{font-size:.84rem;color:var(--te-muted);}
 .team-exam-form__status{font-size:.92rem;font-weight:700;}
@@ -213,15 +252,15 @@
 .team-exam-contact-item__icon{width:44px;height:44px;flex:0 0 44px;border-radius:12px;background:rgba(13,45,108,.08);color:var(--te-blue);display:flex;align-items:center;justify-content:center;}
 .team-exam-contact-item__label{font-size:.74rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--te-muted);margin-bottom:2px;}
 .team-exam-contact-item__value{font-weight:700;color:var(--te-blue);word-break:break-word;}
-.team-exam-map{position:relative;min-height:320px;border-radius:20px;border:1.5px dashed #9FB3D8;background:linear-gradient(160deg,#EAF0FA,#DCE6F5);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:28px;color:var(--te-blue);}
-.team-exam-map__pin{width:54px;height:54px;color:var(--te-red);}
-.team-exam-map__text{font-weight:700;max-width:340px;font-size:.95rem;}
+.team-exam-map{position:relative;min-height:320px;border-radius:20px;border:1.5px solid var(--te-border);background:#fff;box-shadow:var(--te-shadow);overflow:hidden;display:flex;flex-direction:column;}
+.team-exam-map__iframe{display:block;width:100%;flex:1 1 auto;min-height:320px;border:0;}
+.team-exam-map__fallback{padding:12px 16px;text-align:center;font-size:.9rem;font-weight:700;background:var(--te-gray);border-top:1px solid var(--te-border);}
+.team-exam-map__fallback a{color:var(--te-blue);text-decoration:underline;text-underline-offset:3px;border-radius:6px;}
+.team-exam-map__fallback a:hover{color:var(--te-red-text);}
 
 /* ============ Footer ============ */
 .team-exam-footer{background:var(--te-navy);color:rgba(255,255,255,.82);padding:46px 0 30px;}
 .team-exam-footer__inner{max-width:1160px;margin:0 auto;padding:0 20px;display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;}
-.team-exam-footer .team-exam-logo__text{color:#fff;}
-.team-exam-footer .team-exam-logo__text span{color:rgba(255,255,255,.6);}
 .team-exam-footer__links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 24px;}
 .team-exam-footer__links a{font-weight:600;font-size:.9rem;color:rgba(255,255,255,.85);border-radius:6px;}
 .team-exam-footer__links a:hover{color:#fff;text-decoration:underline;}
@@ -243,6 +282,7 @@
   .team-exam-cards{grid-template-columns:repeat(2,1fr);}
   .team-exam-features{grid-template-columns:repeat(2,1fr);}
   .team-exam-form__grid{grid-template-columns:repeat(2,1fr);}
+  .team-exam-date-picker__grid{grid-template-columns:repeat(2,minmax(0,1fr));}
   .team-exam-register__card{padding:44px 38px;}
   .team-exam-form__actions{flex-direction:row;align-items:center;justify-content:space-between;}
 }
@@ -252,6 +292,7 @@
   .team-exam-nav a{padding:10px 13px;font-size:.88rem;}
   .team-exam-nav-toggle{display:none;}
   .team-exam-cards{grid-template-columns:repeat(3,1fr);}
+  .team-exam-grants{grid-template-columns:repeat(3,1fr);}
   .team-exam-contact__grid{grid-template-columns:1fr 1.1fr;}
   .team-exam-timeline{display:flex;max-width:none;padding-left:0;gap:26px;}
   .team-exam-timeline::before{left:10%;right:10%;top:23px;bottom:auto;width:auto;height:3px;background:linear-gradient(90deg,var(--te-blue),var(--te-red));}
@@ -278,13 +319,17 @@
   <header class="team-exam-header">
     <div class="team-exam-header__inner">
       <a class="team-exam-logo" href="#team-exam-app" aria-label="TEAM University">
-        <span class="team-exam-logo__mark" aria-hidden="true">T</span>
-        <span class="team-exam-logo__text">TEAM<span>University</span></span>
+        <!-- LOGO: replace the src below with your own logo file/URL (e.g. src="logo.png").
+             The inline SVG data URI is only a safe placeholder. Recommended: transparent
+             PNG/SVG, ~3:1 width-to-height; it renders up to 42px high / 220px wide. -->
+        <img class="team-exam-logo__image" width="150" height="42" alt="TEAM University"
+             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='42' viewBox='0 0 150 42'%3E%3Crect width='42' height='42' rx='11' fill='%230D2D6C'/%3E%3Ctext x='21' y='29' font-family='Arial,Helvetica,sans-serif' font-size='21' font-weight='700' fill='%23FFFFFF' text-anchor='middle'%3ET%3C/text%3E%3Ctext x='52' y='20' font-family='Arial,Helvetica,sans-serif' font-size='14' font-weight='800' letter-spacing='1.5' fill='%230D2D6C'%3ETEAM%3C/text%3E%3Ctext x='52' y='34' font-family='Arial,Helvetica,sans-serif' font-size='8' font-weight='700' letter-spacing='3' fill='%235D6B82'%3EUNIVERSITY%3C/text%3E%3C/svg%3E">
       </a>
       <nav class="team-exam-nav" id="team-exam-nav" data-i18n-aria-label="nav.aria">
         <ul>
           <li><a href="#team-exam-details" data-i18n="nav.details">Exam Details</a></li>
           <li><a href="#team-exam-why" data-i18n="nav.why">Why TEAM</a></li>
+          <li><a href="#team-exam-scholarships" data-i18n="nav.scholarships">Scholarships</a></li>
           <li><a href="#team-exam-register" data-i18n="nav.register">Registration</a></li>
           <li><a href="#team-exam-process" data-i18n="nav.process">Process</a></li>
           <li><a href="#team-exam-faq" data-i18n="nav.faq">FAQ</a></li>
@@ -338,7 +383,7 @@
         <article class="team-exam-card team-exam-reveal">
           <div class="team-exam-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></div>
           <h3 class="team-exam-card__label" data-i18n="details.dateLabel">Exam Date</h3>
-          <p class="team-exam-card__value" data-i18n="details.dateValue">To be announced</p>
+          <p class="team-exam-card__value" data-i18n="details.dateValue">Choose an available date in the form</p>
         </article>
         <article class="team-exam-card team-exam-reveal">
           <div class="team-exam-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
@@ -403,6 +448,39 @@
     </div>
   </section>
 
+  <!-- Scholarships / grants -->
+  <section class="team-exam-section team-exam-scholarships team-exam-section--navy" id="team-exam-scholarships">
+    <div class="team-exam-container">
+      <div class="team-exam-section__head team-exam-reveal">
+        <span class="team-exam-section__eyebrow" data-i18n="sch.eyebrow">Scholarships &amp; Grants</span>
+        <h2 class="team-exam-section__title" data-i18n="sch.title">Earn a Scholarship with Your Exam Score</h2>
+        <div class="team-exam-divider" aria-hidden="true"></div>
+        <p class="team-exam-section__subtitle" data-i18n="sch.subtitle">The higher your internal entrance exam score, the bigger your scholarship.</p>
+      </div>
+      <div class="team-exam-grants">
+        <article class="team-exam-grant team-exam-reveal">
+          <h3 class="team-exam-grant__score" data-i18n="sch.card1Score">Score 60+</h3>
+          <p class="team-exam-grant__percent" data-i18n="sch.card1Percent">15%</p>
+          <p class="team-exam-grant__label" data-i18n="sch.card1Label">Scholarship</p>
+          <p class="team-exam-grant__text" data-i18n="sch.card1Text">Score 60 or higher and receive a 15% scholarship.</p>
+        </article>
+        <article class="team-exam-grant team-exam-reveal">
+          <h3 class="team-exam-grant__score" data-i18n="sch.card2Score">Score 70+</h3>
+          <p class="team-exam-grant__percent" data-i18n="sch.card2Percent">25%</p>
+          <p class="team-exam-grant__label" data-i18n="sch.card2Label">Scholarship</p>
+          <p class="team-exam-grant__text" data-i18n="sch.card2Text">Score 70 or higher and receive a 25% scholarship.</p>
+        </article>
+        <article class="team-exam-grant team-exam-reveal">
+          <h3 class="team-exam-grant__score" data-i18n="sch.card3Score">Score 80+</h3>
+          <p class="team-exam-grant__percent" data-i18n="sch.card3Percent">50%</p>
+          <p class="team-exam-grant__label" data-i18n="sch.card3Label">Scholarship</p>
+          <p class="team-exam-grant__text" data-i18n="sch.card3Text">Score 80 or higher and receive a 50% scholarship.</p>
+        </article>
+      </div>
+      <p class="team-exam-scholarships__note team-exam-reveal" data-i18n="sch.note">The scholarship is granted based on your final internal entrance exam score. Contact Admissions for full terms and conditions.</p>
+    </div>
+  </section>
+
   <!-- Registration form -->
   <section class="team-exam-register" id="team-exam-register">
     <div class="team-exam-container">
@@ -451,6 +529,78 @@
               <svg class="team-exam-field__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
               <span class="team-exam-field__error" id="team-exam-program-error" role="alert" hidden></span>
             </div>
+            <fieldset class="team-exam-date-picker team-exam-field--full" id="team-exam-datePicker" aria-describedby="team-exam-examDate-hint team-exam-examDate-error">
+              <legend><span data-i18n="form.examDate">Available Exam Dates</span><span class="team-exam-date-picker__required" aria-hidden="true">*</span></legend>
+              <p class="team-exam-date-picker__hint" id="team-exam-examDate-hint" data-i18n="form.examDateHint">Select your preferred exam date</p>
+              <!-- ================================================================
+                   EXAM DATE CARDS — EDIT HERE.
+                   Each date is one card: a <label class="team-exam-date-card">…</label> block.
+                   - CHANGE a date: edit the three visible text lines inside the card:
+                       <span class="team-exam-date-card__top">…</span>     small top text (e.g. year)
+                       <span class="team-exam-date-card__date">…</span>    big main date text
+                       <span class="team-exam-date-card__bottom">…</span>  small bottom text
+                     Also update the radio's value="…" attribute to a short code for the
+                     date (e.g. value="2026-08-07"). The value plus the VISIBLE card text
+                     are sent to the CRM — there are no hidden duplicate labels to edit.
+                     The visible date text is shown in ALL languages (only the shared
+                     "Exams Day" bottom line, heading, hint and badge auto-translate).
+                   - ADD a date: copy one whole <label class="team-exam-date-card">…</label>
+                     block, paste it, then edit its value and text.
+                   - REMOVE a date: delete the whole <label …>…</label> block.
+                   - DISABLED example: the "Jul 24" card below is faded and cannot be
+                     selected because its <input> has the `disabled` attribute. To make it
+                     selectable, remove `disabled` from the input AND remove the
+                     `team-exam-date-card--disabled` class from its <label>.
+                   - FEATURED card: the first card shows an "EARLY ACCESS!" badge. To move
+                     the badge, cut the <span class="team-exam-date-card__badge">…</span>
+                     line and paste it inside another card's body. To remove it, delete it.
+                   Keep `required` on at least one enabled radio so a date must be chosen.
+                   ================================================================ -->
+              <div class="team-exam-date-picker__grid">
+                <!-- <label class="team-exam-date-card">
+                  <input class="team-exam-date-card__input" type="radio" name="examDate" value="today" required>
+                  <span class="team-exam-date-card__body">
+                    <span class="team-exam-date-card__badge" data-i18n="form.examDateBadge">EARLY ACCESS!</span>
+                    <span class="team-exam-date-card__top">TODAY</span>
+                    <span class="team-exam-date-card__date">TRY NOW!</span>
+                    <span class="team-exam-date-card__bottom" data-i18n="form.examDateExamsDay">Exams Day</span>
+                  </span>
+                </label> -->
+                <label class="team-exam-date-card team-exam-date-card--disabled">
+                  <input class="team-exam-date-card__input" type="radio" name="examDate" value="2026-07-24" disabled>
+                  <span class="team-exam-date-card__body">
+                    <span class="team-exam-date-card__top">2026</span>
+                    <span class="team-exam-date-card__date">Jul 24</span>
+                    <span class="team-exam-date-card__bottom" data-i18n="form.examDateExamsDay">Exams Day</span>
+                  </span>
+                </label>
+                <label class="team-exam-date-card">
+                  <input class="team-exam-date-card__input" type="radio" name="examDate" value="2026-08-07">
+                  <span class="team-exam-date-card__body">
+                    <span class="team-exam-date-card__top">2026</span>
+                    <span class="team-exam-date-card__date">Aug 7</span>
+                    <span class="team-exam-date-card__bottom" data-i18n="form.examDateExamsDay">Exams Day</span>
+                  </span>
+                </label>
+                <label class="team-exam-date-card">
+                  <input class="team-exam-date-card__input" type="radio" name="examDate" value="2026-08-13">
+                  <span class="team-exam-date-card__body">
+                    <span class="team-exam-date-card__top">2026</span>
+                    <span class="team-exam-date-card__date">Aug 13</span>
+                    <span class="team-exam-date-card__bottom" data-i18n="form.examDateExamsDay">Exams Day</span>
+                  </span>
+                </label>
+                 <label class="team-exam-date-card">
+                  <input class="team-exam-date-card__input" type="radio" name="examDate" value="2026-08-13">
+                  <span class="team-exam-date-card__body">
+                    <span class="team-exam-date-card__top">2026</span>
+                    <span class="team-exam-date-card__date">Aug 22</span>
+                    <span class="team-exam-date-card__bottom" data-i18n="form.examDateExamsDay">Exams Day</span>
+                  </span>
+                </label>
+              </div>
+              <span class="team-exam-field__error" id="team-exam-examDate-error" role="alert" hidden></span>
+            </fieldset>
             <fieldset class="team-exam-segmented team-exam-field--full" id="team-exam-examTypeGroup" aria-describedby="team-exam-examType-error">
               <legend data-i18n="form.examType">Type of Exam</legend>
               <div class="team-exam-segmented__options">
@@ -645,10 +795,19 @@
             </div>
           </div>
         </div>
-        <!-- Google Maps placeholder: replace this block with the official campus map embed. -->
-        <div class="team-exam-map team-exam-reveal" role="img" data-i18n-aria-label="contact.mapAria">
-          <svg class="team-exam-map__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-          <p class="team-exam-map__text" data-i18n="contact.mapText">Google Maps embed placeholder — replace with the official campus map.</p>
+        <!-- Google Maps embed: TEAM University, Temur Malik street 146, Tashkent.
+             No API key required (output=embed). To point the map elsewhere, change
+             the q= address in the iframe src and the query= address in the link. -->
+        <div class="team-exam-map team-exam-reveal">
+          <iframe class="team-exam-map__iframe"
+                  src="https://www.google.com/maps?q=Temur+Malik+street+146,+Tashkent,+Uzbekistan&output=embed"
+                  title="Map — TEAM University, Temur Malik street 146, Tashkent"
+                  data-i18n-title="contact.mapTitle"
+                  loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <p class="team-exam-map__fallback">
+            <a href="https://www.google.com/maps/search/?api=1&query=Temur+Malik+street+146%2C+Tashkent%2C+Uzbekistan"
+               target="_blank" rel="noopener" data-i18n="contact.mapLink">Open in Google Maps</a>
+          </p>
         </div>
       </div>
     </div>
@@ -658,8 +817,10 @@
   <footer class="team-exam-footer">
     <div class="team-exam-footer__inner">
       <a class="team-exam-logo" href="#team-exam-app" aria-label="TEAM University">
-        <span class="team-exam-logo__mark" aria-hidden="true">T</span>
-        <span class="team-exam-logo__text">TEAM<span>University</span></span>
+        <!-- LOGO (footer): replace the src below with your own logo file/URL.
+             Use a light-on-dark variant here because the footer background is navy. -->
+        <img class="team-exam-logo__image" width="150" height="42" alt="TEAM University"
+             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='42' viewBox='0 0 150 42'%3E%3Crect width='42' height='42' rx='11' fill='%23FFFFFF'/%3E%3Ctext x='21' y='29' font-family='Arial,Helvetica,sans-serif' font-size='21' font-weight='700' fill='%230D2D6C' text-anchor='middle'%3ET%3C/text%3E%3Ctext x='52' y='20' font-family='Arial,Helvetica,sans-serif' font-size='14' font-weight='800' letter-spacing='1.5' fill='%23FFFFFF'%3ETEAM%3C/text%3E%3Ctext x='52' y='34' font-family='Arial,Helvetica,sans-serif' font-size='8' font-weight='700' letter-spacing='3' fill='%23B9C4DA'%3EUNIVERSITY%3C/text%3E%3C/svg%3E">
       </a>
       <nav class="team-exam-footer__links" data-i18n-aria-label="footer.aria">
         <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
@@ -705,6 +866,9 @@
   var UF_PASSPORT_NUMBER = 'UF_CRM_1785149850';
   var UF_PROGRAM_OF_INTEREST = 'UF_CRM_1781501971';
   var UF_EXAM_TYPE = 'UF_CRM_1784278080';
+  /* Exam date UF field: replace 'UF_CRM_XXXXXXXX' with the real UF ID from the
+     Bitrix24 portal. Until then the selected date is still sent inside COMMENTS. */
+  var UF_EXAM_DATE = 'UF_CRM_XXXXXXXX';
 //   var UF_FOUNDATION_LANGUAGE = 'UF_CRM_1785150043';
 //   var UF_PAGE_LANGUAGE = 'UF_CRM_1785150087';
 
@@ -715,6 +879,7 @@
       'nav.aria': 'Main navigation',
       'nav.details': 'Exam Details',
       'nav.why': 'Why TEAM',
+      'nav.scholarships': 'Scholarships',
       'nav.register': 'Registration',
       'nav.process': 'Process',
       'nav.faq': 'FAQ',
@@ -733,7 +898,7 @@
       'details.title': 'Exam Information',
       'details.subtitle': 'Key details about the internal entrance exam.',
       'details.dateLabel': 'Exam Date',
-      'details.dateValue': 'To be announced',
+      'details.dateValue': 'Choose an available date in the form',
       'details.deadlineLabel': 'Registration Deadline',
       'details.deadlineValue': 'Check with Admissions',
       'details.langLabel': 'Exam Language',
@@ -750,11 +915,27 @@
       'why.f1t': 'Fast Admission Process',
       'why.f1d': 'Apply and complete your admission in a few clear steps.',
       'why.f2t': 'Scholarship Opportunities',
-      'why.f2d': 'Strong results can open the door to scholarship support.',
+      'why.f2d': 'Score 80 or higher and earn a scholarship of up to 50%.',
       'why.f3t': 'International Education',
       'why.f3d': 'Study in an international environment with globally oriented programs.',
       'why.f4t': 'Modern Campus & Student Life',
       'why.f4d': 'Learn on a modern campus designed around students.',
+      'sch.eyebrow': 'Scholarships & Grants',
+      'sch.title': 'Earn a Scholarship with Your Exam Score',
+      'sch.subtitle': 'The higher your internal entrance exam score, the bigger your scholarship.',
+      'sch.card1Score': 'Score 60+',
+      'sch.card1Percent': '15%',
+      'sch.card1Label': 'Scholarship',
+      'sch.card1Text': 'Score 60 or higher and receive a 15% scholarship.',
+      'sch.card2Score': 'Score 70+',
+      'sch.card2Percent': '25%',
+      'sch.card2Label': 'Scholarship',
+      'sch.card2Text': 'Score 70 or higher and receive a 25% scholarship.',
+      'sch.card3Score': 'Score 80+',
+      'sch.card3Percent': '50%',
+      'sch.card3Label': 'Scholarship',
+      'sch.card3Text': 'Score 80 or higher and receive a 50% scholarship.',
+      'sch.note': 'The scholarship is granted based on your final internal entrance exam score. Contact Admissions for full terms and conditions.',
       'form.eyebrow': 'Apply Now',
       'form.title': 'Registration',
       'form.subtitle': 'Fill in the form below to register for the internal entrance exam.',
@@ -769,6 +950,10 @@
       'form.programBusiness': 'Entrepreneurship with International Business',
       'form.programIt': 'Entrepreneurship with Digital Innovations',
       'form.programMarketing': 'Entrepreneurship with Marketing',
+      'form.examDate': 'Available Exam Dates',
+      'form.examDateHint': 'Select your preferred exam date',
+      'form.examDateExamsDay': 'Exams Day',
+      'form.examDateBadge': 'EARLY ACCESS!',
       'form.examType': 'Type of Exam',
       'form.examTypeEnglish': 'English',
       'form.examTypeMathematics': 'Mathematics',
@@ -787,6 +972,7 @@
       'err.dobFuture': 'Date of birth cannot be in the future.',
       'err.passport': 'Please enter a valid passport number.',
       'err.select': 'Please choose an option.',
+      'err.examDate': 'Please choose an exam date.',
       'err.examType': 'Please choose a type of exam.',
       'err.submit': 'Something went wrong. Please try again or contact Admissions.',
       'process.eyebrow': 'Step by Step',
@@ -828,8 +1014,8 @@
       'contact.emailValue': 'admission@teamuni.uz',
       'contact.addressLabel': 'Address',
       'contact.addressValue': 'Tashkent, Uzbekistan — Temur Malik\'s street 146, 100050',
-      'contact.mapText': 'Google Maps embed placeholder — replace with the official campus map.',
-      'contact.mapAria': 'Map placeholder for the TEAM University campus',
+      'contact.mapTitle': 'Map — TEAM University, Temur Malik street 146, Tashkent',
+      'contact.mapLink': 'Open in Google Maps',
       'footer.aria': 'Legal links',
       'footer.privacy': 'Privacy Policy',
       'footer.terms': 'Terms',
@@ -843,6 +1029,7 @@
       'nav.aria': 'Основная навигация',
       'nav.details': 'Об экзамене',
       'nav.why': 'Почему TEAM',
+      'nav.scholarships': 'Стипендии',
       'nav.register': 'Регистрация',
       'nav.process': 'Этапы',
       'nav.faq': 'FAQ',
@@ -861,7 +1048,7 @@
       'details.title': 'Информация об экзамене',
       'details.subtitle': 'Основные детали внутреннего вступительного экзамена.',
       'details.dateLabel': 'Дата экзамена',
-      'details.dateValue': 'Будет объявлена',
+      'details.dateValue': 'Выберите удобную дату в форме регистрации',
       'details.deadlineLabel': 'Дедлайн регистрации',
       'details.deadlineValue': 'Уточняйте в приёмной комиссии',
       'details.langLabel': 'Язык экзамена',
@@ -878,11 +1065,27 @@
       'why.f1t': 'Быстрое поступление',
       'why.f1d': 'Подайте заявку и пройдите поступление в несколько простых шагов.',
       'why.f2t': 'Стипендиальные возможности',
-      'why.f2d': 'Высокие результаты могут открыть доступ к стипендиям.',
+      'why.f2d': 'Наберите 80 или более баллов и получите стипендию до 50%.',
       'why.f3t': 'Международное образование',
       'why.f3d': 'Учитесь в международной среде с программами мирового уровня.',
       'why.f4t': 'Современный кампус и студенческая жизнь',
       'why.f4d': 'Учитесь в современном кампусе, созданном для студентов.',
+      'sch.eyebrow': 'Стипендии и гранты',
+      'sch.title': 'Получите стипендию за результат экзамена',
+      'sch.subtitle': 'Чем выше ваш балл на внутреннем вступительном экзамене, тем больше стипендия.',
+      'sch.card1Score': 'Балл 60+',
+      'sch.card1Percent': '15%',
+      'sch.card1Label': 'Стипендия',
+      'sch.card1Text': 'Наберите 60 или более баллов и получите стипендию 15%.',
+      'sch.card2Score': 'Балл 70+',
+      'sch.card2Percent': '25%',
+      'sch.card2Label': 'Стипендия',
+      'sch.card2Text': 'Наберите 70 или более баллов и получите стипендию 25%.',
+      'sch.card3Score': 'Балл 80+',
+      'sch.card3Percent': '50%',
+      'sch.card3Label': 'Стипендия',
+      'sch.card3Text': 'Наберите 80 или более баллов и получите стипендию 50%.',
+      'sch.note': 'Стипендия предоставляется на основе итогового балла внутреннего вступительного экзамена. Полные условия уточняйте в приёмной комиссии.',
       'form.eyebrow': 'Подать заявку',
       'form.title': 'Регистрация',
       'form.subtitle': 'Заполните форму ниже, чтобы зарегистрироваться на внутренний вступительный экзамен.',
@@ -897,6 +1100,10 @@
       'form.programBusiness': 'Предпринимательство и Международный Бизнес',
       'form.programIt': 'Предпринимательство и Цифровые Инновации',
       'form.programMarketing': 'Предпринимательство и Маркетинг',
+      'form.examDate': 'Доступные даты экзамена',
+      'form.examDateHint': 'Выберите предпочтительную дату экзамена',
+      'form.examDateExamsDay': 'День экзамена',
+      'form.examDateBadge': 'РАННИЙ ДОСТУП!',
       'form.examType': 'Тип экзамена',
       'form.examTypeEnglish': 'Английский',
       'form.examTypeMathematics': 'Математика',
@@ -915,6 +1122,7 @@
       'err.dobFuture': 'Дата рождения не может быть в будущем.',
       'err.passport': 'Введите корректный номер паспорта.',
       'err.select': 'Выберите вариант.',
+      'err.examDate': 'Выберите дату экзамена.',
       'err.examType': 'Выберите тип экзамена.',
       'err.submit': 'Что-то пошло не так. Попробуйте ещё раз или свяжитесь с приёмной комиссией.',
       'process.eyebrow': 'Шаг за шагом',
@@ -956,8 +1164,8 @@
       'contact.emailValue': 'admission@teamuni.uz',
       'contact.addressLabel': 'Адрес',
       'contact.addressValue': 'Ташкент, Узбекистан — улица Темура Малика 146, 100050',
-      'contact.mapText': 'Заглушка для карты Google Maps — замените на официальную карту кампуса.',
-      'contact.mapAria': 'Заглушка карты кампуса TEAM University',
+      'contact.mapTitle': 'Карта — TEAM University, улица Темура Малика 146, Ташкент',
+      'contact.mapLink': 'Открыть в Google Maps',
       'footer.aria': 'Юридические ссылки',
       'footer.privacy': 'Политика конфиденциальности',
       'footer.terms': 'Условия использования',
@@ -971,6 +1179,7 @@
       'nav.aria': 'Asosiy navigatsiya',
       'nav.details': 'Imtihon haqida',
       'nav.why': 'Nega TEAM',
+      'nav.scholarships': 'Stipendiyalar',
       'nav.register': 'Ro‘yxatdan o‘tish',
       'nav.process': 'Jarayon',
       'nav.faq': 'FAQ',
@@ -989,7 +1198,7 @@
       'details.title': 'Imtihon ma’lumotlari',
       'details.subtitle': 'Ichki kirish imtihoni haqidagi asosiy ma’lumotlar.',
       'details.dateLabel': 'Imtihon sanasi',
-      'details.dateValue': 'E’lon qilinadi',
+      'details.dateValue': 'Ro‘yxatdan o‘tish formasida qulay sanani tanlang',
       'details.deadlineLabel': 'Ro‘yxatdan o‘tish muddati',
       'details.deadlineValue': 'Qabul bo‘limidan so‘rang',
       'details.langLabel': 'Imtihon tili',
@@ -1006,11 +1215,27 @@
       'why.f1t': 'Tezkor qabul jarayoni',
       'why.f1d': 'Ariza bering va qabulni bir necha oddiy qadamda yakunlang.',
       'why.f2t': 'Stipendiya imkoniyatlari',
-      'why.f2d': 'Yuqori natijalar stipendiya olish imkonini ochishi mumkin.',
+      'why.f2d': '80 yoki undan yuqori ball to‘plang va 50% gacha stipendiya qo‘lga kiriting.',
       'why.f3t': 'Xalqaro ta’lim',
       'why.f3d': 'Global yo‘nalishdagi dasturlar bilan xalqaro muhitda o‘qing.',
       'why.f4t': 'Zamonaviy kampus va talabalik hayoti',
       'why.f4d': 'Talabalar uchun yaratilgan zamonaviy kampusda tahsil oling.',
+      'sch.eyebrow': 'Stipendiyalar va grantlar',
+      'sch.title': 'Imtihon balingiz bilan stipendiya qo‘lga kiriting',
+      'sch.subtitle': 'Ichki kirish imtihonidagi balingiz qancha yuqori bo‘lsa, stipendiya shuncha katta.',
+      'sch.card1Score': 'Ball 60+',
+      'sch.card1Percent': '15%',
+      'sch.card1Label': 'Stipendiya',
+      'sch.card1Text': '60 yoki undan yuqori ball to‘plang va 15% stipendiya oling.',
+      'sch.card2Score': 'Ball 70+',
+      'sch.card2Percent': '25%',
+      'sch.card2Label': 'Stipendiya',
+      'sch.card2Text': '70 yoki undan yuqori ball to‘plang va 25% stipendiya oling.',
+      'sch.card3Score': 'Ball 80+',
+      'sch.card3Percent': '50%',
+      'sch.card3Label': 'Stipendiya',
+      'sch.card3Text': '80 yoki undan yuqori ball to‘plang va 50% stipendiya oling.',
+      'sch.note': 'Stipendiya ichki kirish imtihonining yakuniy bali asosida beriladi. To‘liq shartlarni qabul bo‘limidan so‘rang.',
       'form.eyebrow': 'Ariza bering',
       'form.title': 'Ro‘yxatdan o‘tish',
       'form.subtitle': 'Ichki kirish imtihoniga ro‘yxatdan o‘tish uchun quyidagi formani to‘ldiring.',
@@ -1025,6 +1250,10 @@
       'form.programBusiness': 'Tadbirkorlik va Xalqaro Biznes',
       'form.programIt': 'Tadbirkorlik va Raqamli Innovatsiyalar',
       'form.programMarketing': 'Tadbirkorlik va Marketing',
+      'form.examDate': 'Mavjud imtihon sanalari',
+      'form.examDateHint': 'O‘zingizga qulay imtihon sanasini tanlang',
+      'form.examDateExamsDay': 'Imtihon kuni',
+      'form.examDateBadge': 'ERTA KIRISH!',
       'form.examType': 'Imtihon turi',
       'form.examTypeEnglish': 'Ingliz tili',
       'form.examTypeMathematics': 'Matematika',
@@ -1043,6 +1272,7 @@
       'err.dobFuture': 'Tug‘ilgan sana kelajakda bo‘lishi mumkin emas.',
       'err.passport': 'To‘g‘ri pasport raqamini kiriting.',
       'err.select': 'Variantni tanlang.',
+      'err.examDate': 'Imtihon sanasini tanlang.',
       'err.examType': 'Imtihon turini tanlang.',
       'err.submit': 'Xatolik yuz berdi. Qayta urinib ko‘ring yoki qabul bo‘limiga murojaat qiling.',
       'process.eyebrow': 'Qadam-baqadam',
@@ -1084,8 +1314,8 @@
       'contact.emailValue': 'admission@teamuni.uz',
       'contact.addressLabel': 'Manzil',
       'contact.addressValue': 'Toshkent, O‘zbekiston —  Temur Malik ko\'chasi 146, 100050',
-      'contact.mapText': 'Google Maps joylashtiruvchi o‘rni — rasmiy kampus xaritasi bilan almashtiring.',
-      'contact.mapAria': 'TEAM University kampus xaritasi uchun joylashtiruvchi o‘rin',
+      'contact.mapTitle': 'Xarita — TEAM University, Temur Malik ko‘chasi 146, Toshkent',
+      'contact.mapLink': 'Google Maps’da ochish',
       'footer.aria': 'Huquqiy havolalar',
       'footer.privacy': 'Maxfiylik siyosati',
       'footer.terms': 'Foydalanish shartlari',
@@ -1144,11 +1374,14 @@
     program: function (v) { return v ? '' : t('err.select'); }
   };
 
+  /* examDate is validated separately (radio-card picker), not via validators/fieldIds. */
   var fieldIds = ['fullName', 'phone', 'email', 'dob', 'passport', 'program'];
   var examTypeGroup = byId('team-exam-examTypeGroup');
   var examTypeError = byId('team-exam-examType-error');
   var examTypeNote = byId('team-exam-examType-note');
   var examTypeNoteText = byId('team-exam-examType-note-text');
+  var examDatePicker = byId('team-exam-datePicker');
+  var examDateError = byId('team-exam-examDate-error');
 
   function fieldWrap(input) { return input ? input.closest('.team-exam-field') : null; }
 
@@ -1236,6 +1469,43 @@
     return false;
   }
 
+  /* ---------- Exam date radio-card picker ---------- */
+  function getExamDate() {
+    var checked = form ? form.querySelector('input[name="examDate"]:checked') : null;
+    return checked ? checked.value : '';
+  }
+
+  /* The CRM label is derived from the card's visible text, so editors only
+     ever change the text on the card — no hidden duplicate labels. */
+  function getExamDateLabel() {
+    var checked = form ? form.querySelector('input[name="examDate"]:checked') : null;
+    if (!checked) { return ''; }
+    var card = checked.closest('.team-exam-date-card');
+    var body = card ? card.querySelector('.team-exam-date-card__body') : null;
+    if (!body) { return checked.value; }
+    var parts = [];
+    Array.prototype.forEach.call(body.querySelectorAll('.team-exam-date-card__top, .team-exam-date-card__date, .team-exam-date-card__bottom'), function (el) {
+      var text = el.textContent.trim();
+      if (text) { parts.push(text); }
+    });
+    return parts.join(' — ') || checked.value;
+  }
+
+  function resetExamDate() {
+    if (examDateError) { examDateError.textContent = ''; examDateError.hidden = true; }
+    if (examDatePicker) { examDatePicker.classList.remove('team-exam-date-picker--error'); }
+  }
+
+  function validateExamDate() {
+    if (getExamDate()) {
+      resetExamDate();
+      return true;
+    }
+    if (examDateError) { examDateError.textContent = t('err.examDate'); examDateError.hidden = false; }
+    if (examDatePicker) { examDatePicker.classList.add('team-exam-date-picker--error'); }
+    return false;
+  }
+
   /* ---------- i18n ---------- */
   function applyTranslations() {
     root.setAttribute('lang', currentLang);
@@ -1251,6 +1521,10 @@
     Array.prototype.forEach.call(ariaNodes, function (el) {
       el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria-label')));
     });
+    var titleNodes = root.querySelectorAll('[data-i18n-title]');
+    Array.prototype.forEach.call(titleNodes, function (el) {
+      el.setAttribute('title', t(el.getAttribute('data-i18n-title')));
+    });
     var langBtns = root.querySelectorAll('.team-exam-lang__btn');
     Array.prototype.forEach.call(langBtns, function (btn) {
       var active = btn.getAttribute('data-lang') === currentLang;
@@ -1263,6 +1537,7 @@
       if (input && input.getAttribute('aria-invalid') === 'true') { validateField(name); }
     });
     if (examTypeGroup && examTypeGroup.classList.contains('team-exam-segmented--error')) { validateExamType(); }
+    if (examDatePicker && examDatePicker.classList.contains('team-exam-date-picker--error')) { validateExamDate(); }
     /* Re-translate the conditional exam-type note if it is currently visible. */
     updateExamTypeNote();
     if (submitBtn && !submitBtn.disabled) { submitBtn.textContent = t('form.submit'); }
@@ -1379,21 +1654,7 @@
       var programLabel = PROGRAM_LABELS[formPayload.program] || formPayload.program || '';
       var examTypeLabel = EXAM_TYPE_LABELS[formPayload.examType] || formPayload.examType || '';
       var foundationLangLabel = FOUNDATION_LANGUAGE_LABELS[formPayload.foundationLanguage] || formPayload.foundationLanguage || '';
-
-      /* All submitted details as readable individual lines. */
-      var commentLines = [
-        'Full name: ' + formPayload.fullName,
-        'Phone: ' + formPayload.phone,
-        'Email: ' + formPayload.email,
-        'Date of birth: ' + formPayload.dob,
-        'Program of interest: ' + programLabel,
-        'Exam type: ' + examTypeLabel,
-        'Foundation year language: ' + foundationLangLabel,
-        'Passport number: ' + (formPayload.passport || '—'),
-        'Comments: ' + (formPayload.comments || '—'),
-        'Page language: ' + formPayload.language,
-        'Submitted at: ' + formPayload.submittedAt
-      ];
+      var examDateLabel = formPayload.examDateLabel || formPayload.examDate || '';
 
       var fields = {
         TITLE: 'Internal Entrance Exam - ' + formPayload.fullName + ' (' + examTypeLabel + ', ' + programLabel + ')',
@@ -1402,7 +1663,7 @@
         PHONE: [{ VALUE: formPayload.phone, VALUE_TYPE: 'WORK' }],
         EMAIL: [{ VALUE: formPayload.email, VALUE_TYPE: 'WORK' }],
         BIRTHDATE: formPayload.dob,
-        COMMENTS: commentLines.join('\n'),
+        COMMENTS: 'Exam date: ' + examDateLabel + '\nComments: ' + (formPayload.comments || '—'),
         SOURCE_ID: BITRIX_SOURCE_ID,
         SOURCE_DESCRIPTION: window.location.href
       };
@@ -1415,6 +1676,7 @@
       setUf(UF_PASSPORT_NUMBER, formPayload.passport);
       setUf(UF_PROGRAM_OF_INTEREST, programLabel);
       setUf(UF_EXAM_TYPE, examTypeLabel);
+      setUf(UF_EXAM_DATE, examDateLabel);
     //   setUf(UF_FOUNDATION_LANGUAGE, foundationLangLabel);
     //   setUf(UF_PAGE_LANGUAGE, formPayload.language);
 
@@ -1496,6 +1758,12 @@
         updateExamTypeNote();
       });
     });
+    Array.prototype.forEach.call(form.querySelectorAll('input[name="examDate"]'), function (radio) {
+      radio.addEventListener('change', function () {
+        /* Selecting a date always clears the picker error. */
+        validateExamDate();
+      });
+    });
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -1515,6 +1783,13 @@
           firstInvalid = examTypeGroup.querySelector('input[name="examType"]');
         }
       }
+      if (!validateExamDate()) {
+        allValid = false;
+        if (!firstInvalid) {
+          /* Focus the first selectable (enabled) exam-date radio card. */
+          firstInvalid = form.querySelector('input[name="examDate"]:not(:disabled)');
+        }
+      }
       if (!allValid) {
         showStatus(t('form.invalid'), true);
         if (firstInvalid && firstInvalid.focus) { firstInvalid.focus(); }
@@ -1528,6 +1803,8 @@
         dob: byId('team-exam-dob').value,
         passport: byId('team-exam-passport').value.trim(),
         program: byId('team-exam-program').value,
+        examDate: getExamDate(),
+        examDateLabel: getExamDateLabel(),
         examType: getExamType(),
         foundationLanguage: foundationLanguageFor(getExamType()),
         comments: byId('team-exam-comments').value.trim(),
@@ -1543,6 +1820,8 @@
         form.reset();
         fieldIds.forEach(clearFieldError);
         resetExamType();
+        /* form.reset() also unchecks the selected date card; clear its error too. */
+        resetExamDate();
         if (noticeEl && noticeEl.scrollIntoView) {
           noticeEl.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
         }
