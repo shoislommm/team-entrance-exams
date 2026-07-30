@@ -1688,6 +1688,7 @@
         if (!res.ok) { throw new Error('HTTP ' + res.status); }
         return res.json();
       }).then(function (data) {
+        console.log('[team-exam] Bitrix24 fetch success:', data);
         if (data && data.error) {
           logError('[team-exam] Bitrix24 error:', data.error, data.error_description || '');
         } else {
@@ -1695,6 +1696,7 @@
         }
         if (typeof onSuccess === 'function') { onSuccess(data); }
       }).catch(function (err) {
+        console.log('[team-exam] Bitrix24 fetch failed:', err);
         logError('[team-exam] Failed to create Bitrix24 lead:', err);
       });
     } catch (err) {
