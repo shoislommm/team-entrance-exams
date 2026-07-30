@@ -1616,7 +1616,7 @@
       var programLabel = PROGRAM_LABELS[formPayload.program] || formPayload.program || '';
       var examTypeLabel = EXAM_TYPE_LABELS[formPayload.examType] || formPayload.examType || '';
       var foundationLangLabel = FOUNDATION_LANGUAGE_LABELS[formPayload.foundationLanguage] || formPayload.foundationLanguage || '';
-      var examDateLabel = formPayload.examDateLabel || formPayload.examDate || '';
+      var examDateLabel = formPayload.examDate || '';
 
       var fields = {
         TITLE: 'Internal Entrance Exam - ' + formPayload.fullName + ' (' + examTypeLabel + ', ' + programLabel + ')',
@@ -1642,8 +1642,6 @@
       setUf(UF_PROGRAM_OF_INTEREST, programLabel);
       setUf(UF_EXAM_TYPE, examTypeLabel);
       setUf(UF_EXAM_DATE, examDateLabel);
-    //   setUf(UF_FOUNDATION_LANGUAGE, foundationLangLabel);
-    //   setUf(UF_PAGE_LANGUAGE, formPayload.language);
 
       var body = JSON.stringify({
         fields: fields,
