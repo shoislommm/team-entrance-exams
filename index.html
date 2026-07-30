@@ -1692,9 +1692,11 @@
     <div class="team-exam-hero__shape team-exam-hero__shape--2" aria-hidden="true"></div>
     <div class="team-exam-hero__shape team-exam-hero__shape--3" aria-hidden="true"></div>
     <div class="team-exam-hero__glass team-exam-hero__glass--left" aria-hidden="true">
-      <span></span><span></span><span></span><span></span></div>
+      <span></span><span></span><span></span><span></span>
+    </div>
     <div class="team-exam-hero__glass team-exam-hero__glass--right" aria-hidden="true">
-      <span></span><span></span><span></span><span></span></div>
+      <span></span><span></span><span></span><span></span>
+    </div>
     <div class="team-exam-hero__inner">
       <p class="team-exam-hero__badge team-exam-reveal" data-i18n="hero.badge">Internal Entrance Exam</p>
       <h1 class="team-exam-hero__title team-exam-reveal" data-i18n="hero.title">Register for the TEAM University
@@ -2961,23 +2963,7 @@
       return checked ? checked.value : '';
     }
 
-    /* The CRM label is derived from the card's visible text, so editors only
-       ever change the text on the card — no hidden duplicate labels. */
-    function getExamDateLabel() {
-      var checked = form ? form.querySelector('input[name="examDate"]:checked') : null;
-      if (!checked) { return ''; }
-      var card = checked.closest('.team-exam-date-card');
-      var body = card ? card.querySelector('.team-exam-date-card__body') : null;
-      if (!body) { return checked.value; }
-      var parts = [];
-      Array.prototype.forEach.call(body.querySelectorAll('.team-exam-date-card__top, .team-exam-date-card__date, .team-exam-date-card__bottom'), function (el) {
-        var text = el.textContent.trim();
-        if (text) { parts.push(text); }
-      });
-      return parts.join(' — ') || checked.value;
-    }
-
-    function resetExamDate() {
+   function resetExamDate() {
       if (examDateError) { examDateError.textContent = ''; examDateError.hidden = true; }
       if (examDatePicker) { examDatePicker.classList.remove('team-exam-date-picker--error'); }
     }
@@ -3140,7 +3126,6 @@
         var programLabel = PROGRAM_LABELS[formPayload.program] || formPayload.program || '';
         var examTypeLabel = EXAM_TYPE_LABELS[formPayload.examType] || formPayload.examType || '';
         var foundationLangLabel = FOUNDATION_LANGUAGE_LABELS[formPayload.foundationLanguage] || formPayload.foundationLanguage || '';
-        var examDateLabel = formPayload.examDateLabel || '';
         var examDate = formPayload.examDate || '';
         var fields = {
           TITLE: 'Internal Entrance Exam - ' + formPayload.fullName + ' (' + examTypeLabel + ', ' + programLabel + ')',
@@ -3154,10 +3139,6 @@
           SOURCE_DESCRIPTION: window.location.href
         };
 
-
-        console.log(UF_EXAM_DATE);
-        console.log(examDateLabel);
-        console.log(examDate)
         /* Custom user fields: only sent once the placeholder is replaced with
            a real UF ID (i.e. the constant no longer contains 'XXXX'). */
         function setUf(ufKey, value) {
@@ -3166,7 +3147,6 @@
         setUf(UF_PASSPORT_NUMBER, formPayload.passport);
         setUf(UF_PROGRAM_OF_INTEREST, programLabel);
         setUf(UF_EXAM_TYPE, examTypeLabel);
-        setUf(UF_EXAM_DATE, examDateLabel);
         setUf(UF_EXAM_DATE, examDate);
 
 
@@ -3294,7 +3274,6 @@
           passport: byId('team-exam-passport').value.trim(),
           program: byId('team-exam-program').value,
           examDate: getExamDate(),
-          examDateLabel: getExamDateLabel(),
           examType: getExamType(),
           foundationLanguage: foundationLanguageFor(getExamType()),
           comments: byId('team-exam-comments').value.trim(),
