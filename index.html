@@ -529,40 +529,7 @@
             <fieldset class="team-exam-date-picker team-exam-field--full" id="team-exam-datePicker" aria-describedby="team-exam-examDate-hint team-exam-examDate-error">
               <legend><span data-i18n="form.examDate">Available Exam Dates</span><span class="team-exam-date-picker__required" aria-hidden="true">*</span></legend>
               <p class="team-exam-date-picker__hint" id="team-exam-examDate-hint" data-i18n="form.examDateHint">Select your preferred exam date</p>
-              <!-- ================================================================
-                   EXAM DATE CARDS — EDIT HERE.
-                   Each date is one card: a <label class="team-exam-date-card">…</label> block.
-                   - CHANGE a date: edit the three visible text lines inside the card:
-                       <span class="team-exam-date-card__top">…</span>     small top text (e.g. year)
-                       <span class="team-exam-date-card__date">…</span>    big main date text
-                       <span class="team-exam-date-card__bottom">…</span>  small bottom text
-                     Also update the radio's value="…" attribute to a short code for the
-                     date (e.g. value="2026-08-07"). The value plus the VISIBLE card text
-                     are sent to the CRM — there are no hidden duplicate labels to edit.
-                     The visible date text is shown in ALL languages (only the shared
-                     "Exams Day" bottom line, heading, hint and badge auto-translate).
-                   - ADD a date: copy one whole <label class="team-exam-date-card">…</label>
-                     block, paste it, then edit its value and text.
-                   - REMOVE a date: delete the whole <label …>…</label> block.
-                   - DISABLED example: the "Jul 24" card below is faded and cannot be
-                     selected because its <input> has the `disabled` attribute. To make it
-                     selectable, remove `disabled` from the input AND remove the
-                     `team-exam-date-card--disabled` class from its <label>.
-                   - FEATURED card: the first card shows an "EARLY ACCESS!" badge. To move
-                     the badge, cut the <span class="team-exam-date-card__badge">…</span>
-                     line and paste it inside another card's body. To remove it, delete it.
-                   Keep `required` on at least one enabled radio so a date must be chosen.
-                   ================================================================ -->
               <div class="team-exam-date-picker__grid">
-                <!-- <label class="team-exam-date-card">
-                  <input class="team-exam-date-card__input" type="radio" name="examDate" value="today" required>
-                  <span class="team-exam-date-card__body">
-                    <span class="team-exam-date-card__badge" data-i18n="form.examDateBadge">EARLY ACCESS!</span>
-                    <span class="team-exam-date-card__top">TODAY</span>
-                    <span class="team-exam-date-card__date">TRY NOW!</span>
-                    <span class="team-exam-date-card__bottom" data-i18n="form.examDateExamsDay">Exams Day</span>
-                  </span>
-                </label> -->
                 <label class="team-exam-date-card team-exam-date-card--disabled">
                   <input class="team-exam-date-card__input" type="radio" name="examDate" value="2026-07-24" disabled>
                   <span class="team-exam-date-card__body">
@@ -1663,6 +1630,9 @@
         SOURCE_DESCRIPTION: window.location.href
       };
 
+
+      console.log(UF_EXAM_DATE);
+      console.log(examDateLabel);
       /* Custom user fields: only sent once the placeholder is replaced with
          a real UF ID (i.e. the constant no longer contains 'XXXX'). */
       function setUf(ufKey, value) {
@@ -1671,7 +1641,7 @@
       setUf(UF_PASSPORT_NUMBER, formPayload.passport);
       setUf(UF_PROGRAM_OF_INTEREST, programLabel);
       setUf(UF_EXAM_TYPE, examTypeLabel);
-      setUf(UF_EXAM_DATE, "examDateLabel");
+      setUf(UF_EXAM_DATE, examDateLabel);
     //   setUf(UF_FOUNDATION_LANGUAGE, foundationLangLabel);
     //   setUf(UF_PAGE_LANGUAGE, formPayload.language);
 
@@ -1688,7 +1658,6 @@
         if (!res.ok) { throw new Error('HTTP ' + res.status); }
         return res.json();
       }).then(function (data) {
-        console.log('[team-exam] Bitrix24 fetch success:', data);
         if (data && data.error) {
           logError('[team-exam] Bitrix24 error:', data.error, data.error_description || '');
         } else {
@@ -1696,7 +1665,6 @@
         }
         if (typeof onSuccess === 'function') { onSuccess(data); }
       }).catch(function (err) {
-        console.log('[team-exam] Bitrix24 fetch failed:', err);
         logError('[team-exam] Failed to create Bitrix24 lead:', err);
       });
     } catch (err) {
